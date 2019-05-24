@@ -1,0 +1,58 @@
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<h1>{{ author.name }}</h1>
+<p>{{ author.email }}</p>
+<p>{{user.username}}</p>
+<p>salutation: {{ author.salutation }}</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<h1>---------------------------</h1>
+<br/>
+<h1>React Component</h1>
+
+
+<div id="app"></div>
+
+<script type="text/babel">
+  class App extends React.Component {
+    // hare you need to put your variable or structure.
+    // accessing to variable is with 'this' statment that we can see in the h1 tag below.
+    //for example ouer state varable :
+    state = {
+        name: '{{user.username}}',
+        age: 29
+
+      }
+    // Hear you need to put your functions and event handlers.
+    //for example :
+    handelChange = (e) => {
+      this.setState({
+        name: e.target.value
+      })
+    }
+    handelSubmit = (e) => {
+      // function preventDefault prevent from refrsh the page .
+      e.preventDefault();
+      console.log('form submitted', this.state.name)
+    }
+    // This is reander function it's like main function that invoke in the last line from ReactDOM object.
+    render() {
+      return (
+        <div className="app-content">
+          <h1>My name is { this.state.name }</h1>
+          <form onSubmit={ this.handelSubmit }>
+            <input type="text" onChange={ this.handelChange }/>
+            <button>Submit</button>
+          </form>
+        </div>
+      )
+    }
+  }
+
+ReactDOM.render(<App />,document.getElementById('app'));
+</script>
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block con1 %}
+{% endblock %}
+
+{% block body1 %}
+    {% if form %}
+        <ul>
+        {% for user in form %}
+            {% for field in user %}
+            <label class="control-label col-sm-12">{{ field.label_tag }}</label>
+            <div class="col-sm-offset-2 col-sm-10">{{ field }}</div>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+   
+{% endblock %}

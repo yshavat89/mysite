@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body1 %}
+      {% if error_massage %}
+          <p><strong>{{ error_massage }}</strong></p>
+      {% endif %}
+<!--Start panel-->
+<div class="treasure panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add Treasur</h3>
+  </div>
+  <div class="panel-body">
+      <!--Start form-->
+      <form class="form-horixontal" role="form" action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% include 'treasure/form_template.html' %}
+          <!--{{form.as_p}}-->
+      </form>
+      <!--End form-->
+  </div>
+</div>
+<!--End panel-->
+{% endblock %}

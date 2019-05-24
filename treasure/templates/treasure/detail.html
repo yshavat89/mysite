@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body1 %}
+    <h1>{{ treasure.name }}</h1>
+
+    {% if treasure %}
+    <main class="container" role="main">
+        <!--Start Row -->
+        <div class="row">
+                <!--Start Col-->
+                <div class="col-md-4">
+                    <div class="trasure panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">{{ treasure.name }}</h2>
+                            <h2 class="panel-title">{{ treasure.location }}</h2>
+                            <img src="../..{{ treasure.image.url }}" />
+                        </div>
+
+                    </div>   
+                </div>       
+                <!--End Col-->
+        </div> 
+        <!--End Row-->  
+    </main>        
+{% else %}
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% endif %}
+{% endblock %}

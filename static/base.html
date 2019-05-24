@@ -1,0 +1,102 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <!--<title>{% block title %}Top navbar example for Bootstrap{% endblock %}</title>-->
+    <title>Top navbar example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "navbar-top.css" %} rel="stylesheet">
+  </head>
+
+  <body>
+{% block nevbar %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="{% url 'polls:detail' "1" %}">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'polls:index' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/../admin/">Admin <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" >
+              {% if user.is_authenticated %}
+                  User : {{ user.username }}
+              {% else %}
+                <p style="color:white;">User : anonymous</p>
+              {% endif %}</a>
+        </li>
+        <li class="nav-item border">
+            <a class="nav-link" href="{% url 'my_login:users-table' %}">Users</a>
+        </li>
+        <li class="nav-item border">
+          <a class="nav-link" href="{% url 'polls:question_add' %}">Add Question</a>
+        </li>
+        <li class="nav-item border">
+          <a class="nav-link" href="{% url 'polls:register' %}">register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'polls:choice_add' %}">Add choice</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'treasure:index' %}">Treasure App</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'my_login:login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'my_login:logout' %}">
+                <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp; Logout
+            </a>
+        </li>
+
+        <li class="nav-item">
+          <form action="{% url 'librery:author-interest' 1 %}" method="post" target="_blank">
+            {% csrf_token %}
+            <input type="submit" value="Submit">
+          </form>
+        </li>
+
+            
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+{% endblock %}
+
+{% block con1 %}
+{% endblock %}
+{% block body1 %}
+{% endblock %}
+{% block footer %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="{% static "assets/js/vendor/popper.min.js" %}"></script>
+    <script src="{% static "dist/js/bootstrap.min.js"%}"></script>
+
+  </body>
+</html>
+
+{% endblock %}

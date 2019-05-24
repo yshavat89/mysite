@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block con1 %}
+{% endblock %}
+
+{% block body1 %}
+<link rel="stylesheet" type="text/css" href="{% static 'treasure/style.css' %}" />
+<h1>Treasuregram</h1>
+    {% if treasures_list %}
+        <main class="container" role="main">
+            <!--Start Row -->
+            <div class="row">
+                {% for treasure in treasures_list %}
+                    <!--Start Col-->
+                    <div class="col-md-4">
+                        <div class="trasure panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">{{ treasure.name }}</h2>
+                            </div>
+                            <div class="treasure-photo">
+                                <a href="{% url 'treasure:detail' treasure.id %}">{{ treasure.name }}</a>
+                            </div>
+                        </div>   
+                    </div>       
+                    <!--End Col-->
+                {% if forloop.counter|divisibleby:3 %}
+                    </div><div class="row">
+                {% endif %}
+                {% endfor %} 
+            </div> 
+            <!--End Row-->  
+        </main>        
+    {% else %}
+        <p>No Treasure are available.</p>
+    {% endif %}
+    <a href="{% url 'treasure:create-treasure' %}">
+            <div class="col-sm-offset-8 col-sm-10">
+                    <button type="submit" class="btn btn-success">Crerate Treasure</button>
+                </div>
+    </a>   
+{% endblock %}

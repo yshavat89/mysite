@@ -1,0 +1,42 @@
+h1 {
+    color: green;
+}
+li a {
+  color: black;
+}
+/*body {
+  background:url("images/background.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;
+}*/
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+tr {
+  background-color: #e9d899;
+  color: white;
+}
+tr:nth-child(even){background-color: #e2c88e}
+
+th {
+  background-color: #d1bea5;
+  color: white;
+}
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+img:hover {
+  box-shadow: 0 0 70px 1px rgba(90, 88, 68, 0.5);
+}

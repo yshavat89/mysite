@@ -1,0 +1,11 @@
+{% extends "jinja2_tests/A.html" %}
+
+{% block Aa %}
+<h1>Aa is not works</h1>
+{% endblock %}
+
+{% block A %}
+<h1>it's works !!</h1>
+{% endblock %}
+
+{% include "jinja2_tests/B.html" %}
